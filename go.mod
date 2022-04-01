@@ -1,4 +1,4 @@
-module gitee.com/qhr0605/blockchain-middleware-sdk
+module github.com/QHR0605/blockchain-middleware-sdk
 
 go 1.16
 

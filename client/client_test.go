@@ -3,8 +3,8 @@ package client
 import (
 	"context"
 	"fmt"
-	"gitee.com/qhr0605/blockchain-middleware-sdk/config"
-	rpc_model "gitee.com/qhr0605/blockchain-middleware-sdk/model/rpc-model"
+	"github.com/QHR0605/blockchain-middleware-sdk/config"
+	rpc_model "github.com/QHR0605/blockchain-middleware-sdk/model/rpc-model"
 	"testing"
 )
 
