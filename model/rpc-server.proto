@@ -1,0 +1,87 @@
+syntax = "proto3";
+option go_package = "/rpc-model";
+service RpcServer {
+  rpc HandleInitBill(Bill) returns(RpcResponse);
+  rpc HandleQueryBill(QueryCondition) returns(RpcResponse);
+  rpc HandleUpdateBillStatus(BillStatus) returns(RpcResponse);
+  rpc HandleDeleteBill(BillNumber) returns(RpcResponse);
+  rpc HandleQueryBills(QueryBillWithPage) returns(RpcResponseWithPageMeta);
+}
+message QueryCondition  {
+  string bill_code = 1;
+  string bill_number = 2;
+  string check_code = 3;
+  string issue_date = 4;
+  string payer_party_name = 5;
+  string payer_party_code = 6;
+}
+
+// Bill 开票数据格式详见http://czt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=961c3e502fd14b0882c9dbde7b0cb73d.pdf
+message Bill  {
+  string docType = 1;
+  string bill_status = 2;
+  string bill_type = 3;
+  string machine_id = 4;
+  string bill_code = 5;
+  string bill_number = 6;
+  string check_code = 7;
+  string total_amount = 8;
+  string issue_date = 9;
+  string invoice_time = 10;
+  string invoicing_party_code = 11;
+  string invoicing_party_name = 12;
+  string rec_name = 13;
+  string rec_acct = 14;
+  string rec_op_bk = 15;
+  string rec_address = 16;
+  string payer_party_type = 17;
+  string payer_party_code = 18;
+  string payer_party_name = 19;
+  string payer_acct = 20;
+  string payer_op_bk = 21;
+  string payer_address = 22;
+  string item_code = 23;
+  string item_name = 24;
+  int32 item_quantity = 25;
+  double item_unit_price = 26;
+  string  item_unit = 27;
+  double item_amount = 28;
+  double  item_tax_rate = 29;
+  double item_tax_amount = 30;
+   string remarks = 31;
+   string memory_address = 32;
+   string handling_person = 33;
+   string checker = 34;
+}
+
+message BillStatus {
+  string bill_number = 1;
+  string Status = 2;
+}
+message RpcResponse {
+  int32 Code = 1;
+  string  Message = 2;
+  Bills Data = 3;
+  string Detail = 4;
+}
+message Bills {
+  repeated Bill Bills = 1;
+}
+message BillNumber{
+  string bill_number = 1;
+}
+message QueryBillWithPage{
+  string query_string = 1;
+  int32 page_size = 2;
+  string book_mark = 3;
+}
+message BillWithBookMark {
+  string  BookMark = 1;
+  repeated Bill Data = 2;
+}
+message RpcResponseWithPageMeta {
+  int32 Code = 1;
+  string  Message = 2;
+   BillWithBookMark Data = 3;
+   string Detail = 4;
+}
