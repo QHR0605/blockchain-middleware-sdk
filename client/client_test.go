@@ -1,10 +1,10 @@
 package client
 
 import (
-	"blockchain-middleware-sdk/config"
-	rpc_model "blockchain-middleware-sdk/model/rpc-model"
 	"context"
 	"fmt"
+	"gitee.com/qhr0605/blockchain-middleware-sdk/config"
+	rpc_model "gitee.com/qhr0605/blockchain-middleware-sdk/model/rpc-model"
 	"testing"
 )
 
