@@ -39,15 +39,15 @@ func (c *MiddleWareClient) CallHandleQueryBills(ctx context.Context, args *rpc_m
 	}
 	return data, nil
 }
-func (c *MiddleWareClient) CallHandleDeleteBill(ctx context.Context, args interface{}) (*rpc_model.RpcResponse, error) {
-	data, err := c.CallHandleDeleteBill(ctx, args)
+func (c *MiddleWareClient) CallHandleDeleteBill(ctx context.Context, args *rpc_model.BillNumber) (*rpc_model.RpcResponse, error) {
+	data, err := c.Conn.HandleDeleteBill(ctx, args)
 	if err != nil {
 		return nil, err
 	}
 	return data, nil
 }
-func (c *MiddleWareClient) CallHandleUpdateStatus(ctx context.Context, args interface{}) (*rpc_model.RpcResponse, error) {
-	data, err := c.CallHandleUpdateStatus(ctx, args)
+func (c *MiddleWareClient) CallHandleUpdateStatus(ctx context.Context, args *rpc_model.BillStatus) (*rpc_model.RpcResponse, error) {
+	data, err := c.Conn.HandleUpdateBillStatus(ctx, args)
 	if err != nil {
 		return nil, err
 	}
